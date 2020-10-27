@@ -28,7 +28,12 @@ class MyView: View() {
 
             }
             button("Commit") {
-                action {  controller.writeToDb(TitleField.text, DescriptionField.text)}
+                action {  controller.addTask(TitleField.text, DescriptionField.text)}
+            }
+            button("list") {
+                action {
+                    controller.listTask()
+                }
             }
         }
 
