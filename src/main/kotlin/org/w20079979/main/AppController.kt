@@ -1,22 +1,29 @@
 package org.w20079979.main
 
+import javafx.collections.ObservableList
 import org.w20079979.main.models.TaskModel
-
-var task = TaskModel()
+import org.w20079979.main.models.TaskMemStore
 
 class AppController {
+
+    val tasks = TaskMemStore()
     fun addTask(titleValue: String, descriptionValue: String) {
-        task.title = titleValue;
-        task.description = descriptionValue;
-        for (x in 0..364) task.days.add(false)
+        var task = TaskModel()
+        task.title = titleValue
+        task.description = descriptionValue
+        tasks.create(task)
     }
 
     fun listTask() {
-        println("All tasks")
+        var task = TaskModel()
         println(task.title)
         for (i in task.days) {
             println(i)
         }
+    }
+
+    fun showAll(): ObservableList<TaskModel> {
+        return tasks.tasks
     }
 
 }
